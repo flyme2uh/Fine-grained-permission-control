@@ -1,0 +1,4 @@
+authority: Person
+paths: !!set
+  /test/api3: null
+  /test/api2: null

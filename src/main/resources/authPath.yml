@@ -1,0 +1,12 @@
+Company:
+- /test/api3
+Staff:
+- /test/api2
+CompanyAdmin: []
+Person:
+- /test/api2
+- /test/api1
+CompanyOwner: []
+
+
+#本yml中的path为拒绝该权限访问的path

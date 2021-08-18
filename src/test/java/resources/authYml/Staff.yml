@@ -1,0 +1,3 @@
+authority: Staff
+paths: !!set
+  /test/api2: null
