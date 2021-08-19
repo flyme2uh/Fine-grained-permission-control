@@ -30,10 +30,9 @@ public class CustomInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //配置文件地址
         File file = new File("src/main/resources/preEnhancement.yml");
-        String chara = request.getHeader("Chara");
         String requestURI = request.getRequestURI();
         //读取配置文件中的方法
-        ArrayList<String> methodNameList = enhancementYmlReader(chara,requestURI, file);
+        ArrayList<String> methodNameList = enhancementYmlReader(requestURI, file);
         //无方法直接通过
         if (methodNameList==null){
             return true;
@@ -51,9 +50,8 @@ public class CustomInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         File file = new File("src/main/resources/postEnhancement.yml");
-        String chara = request.getHeader("Chara");
         String requestURI = request.getRequestURI();
-        ArrayList<String> methodNameList = enhancementYmlReader(chara, requestURI, file);
+        ArrayList<String> methodNameList = enhancementYmlReader(requestURI, file);
         if(methodNameList != null){
             for (String methodName : methodNameList) {
                 Class<?> clz = Class.forName(methodName);
@@ -64,18 +62,15 @@ public class CustomInterceptor implements HandlerInterceptor {
     }
 
     /**
-    * @Description: 根据角色名和url读取增强配置中的增强方法
+    * @Description: 根据url读取增强配置中的增强方法
     * @Author: chenzhipeng
     * @Date: 2021/8/18
     */
-    private ArrayList<String> enhancementYmlReader(String chara, String requestURI, File file) throws FileNotFoundException {
+    private ArrayList<String> enhancementYmlReader(String requestURI, File file) throws FileNotFoundException {
         FileInputStream inputStream = new FileInputStream(file);
         Yaml yaml = new Yaml();
         Map load = yaml.load(inputStream);
-        Map<String, ArrayList<String>> apiMap = (Map) load.get(chara);
-        ArrayList<String> methodNameList = apiMap.get(requestURI);
+        ArrayList<String> methodNameList = (ArrayList<String>) load.get(requestURI);
         return methodNameList;
     }
-
-
 }

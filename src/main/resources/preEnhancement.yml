@@ -1,15 +1,12 @@
-Person:
-  /test/api3:
-  - com.bylz.fgaTest.enhancement.impl.PreEnhancement02
-  - com.bylz.fgaTest.enhancement.impl.PreEnhancement01
-
-Company:
-  /test/api1:
-  - com.bylz.fgaTest.enhancement.impl.PreEnhancement03
-  /test/api2:
+/test/api3:
   - com.bylz.fgaTest.enhancement.impl.PreEnhancement01
   - com.bylz.fgaTest.enhancement.impl.PreEnhancement03
-
-Staff:
-  /test/api3:
   - com.bylz.fgaTest.enhancement.impl.PreEnhancement02
+
+/test/api1:
+  - com.bylz.fgaTest.enhancement.impl.PreEnhancement03
+
+/test/api2:
+  - com.bylz.fgaTest.enhancement.impl.PreEnhancement01
+  - com.bylz.fgaTest.enhancement.impl.PreEnhancement03
+

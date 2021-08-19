@@ -31,6 +31,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         ArrayList<String> paths = (ArrayList<String>) load.get(chara);
         for (String path : paths) {
             if (path.equals(request.getRequestURI())){
+                //拦截所有配置的路径和对应的用户角色
                 System.out.println(request.getRequestURI()+" auth false");
                 response.sendError(401);
                 return false;

@@ -1,16 +1,9 @@
-Person:
-  /test/api3:
+/test/api3:
   - com.bylz.fgaTest.enhancement.impl.PostEnhancement01
-  - com.bylz.fgaTest.enhancement.impl.PostEnhancement02
+
+/test/api1:
   - com.bylz.fgaTest.enhancement.impl.PostEnhancement03
 
-Company:
-  /test/api1:
-  - com.bylz.fgaTest.enhancement.impl.PostEnhancement03
-  /test/api2:
+/test/api2:
   - com.bylz.fgaTest.enhancement.impl.PostEnhancement01
   - com.bylz.fgaTest.enhancement.impl.PostEnhancement03
-
-Staff:
-  /test/api3:
-  - com.bylz.fgaTest.enhancement.impl.PostEnhancement02
