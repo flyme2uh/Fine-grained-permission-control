@@ -1,5 +1,7 @@
 package com.bylz.fgaTest.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +14,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ApiService {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     public ResponseEntity api1(){
-        System.out.println("api1 service");
+        log.info("Api1 service");
         return ResponseEntity.ok("api1");
     }
 
     public ResponseEntity api2(){
-        System.out.println("api2 service");
+        log.info("Api2 service");
         return ResponseEntity.ok("api2");
     }
 
     public ResponseEntity api3(){
-        System.out.println("api3 service");
+        log.info("Api3 service");
         return ResponseEntity.ok("api3");
     }
 }

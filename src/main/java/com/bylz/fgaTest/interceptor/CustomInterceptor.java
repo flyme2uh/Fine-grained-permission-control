@@ -8,6 +8,8 @@ package com.bylz.fgaTest.interceptor;
  * @Version 1.0
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +26,7 @@ import java.util.Map;
 
 @Component
 public class CustomInterceptor implements HandlerInterceptor {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     //前置拦截器
     @Override

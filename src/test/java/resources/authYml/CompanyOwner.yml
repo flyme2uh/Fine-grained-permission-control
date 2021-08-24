@@ -1,3 +1,0 @@
-authority: CompanyOwner
-paths: !!set
-  /test/api1: null

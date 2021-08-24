@@ -1,6 +1,8 @@
 package com.bylz.fgaTest.enhancement.impl;
 
 import com.bylz.fgaTest.enhancement.BasePreEnhancement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
  * @Version 1.0
  */
 public class PreEnhancement03 implements BasePreEnhancement {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public void preEnhancement(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("enhancement03");
+        log.info("PreEnhancement03");
     }
 }

@@ -1,5 +1,0 @@
-authority: Company
-paths: !!set
-  /test/api3: null
-  /test/api2: null
-  /test/api1: null

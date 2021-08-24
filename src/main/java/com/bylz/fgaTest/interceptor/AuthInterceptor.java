@@ -1,5 +1,7 @@
 package com.bylz.fgaTest.interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.yaml.snakeyaml.Yaml;
@@ -21,6 +23,8 @@ import java.util.Map;
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String chara = request.getHeader("Chara");
@@ -29,15 +33,19 @@ public class AuthInterceptor implements HandlerInterceptor {
         Yaml yml = new Yaml();
         Map load = yml.load(inputStream);
         ArrayList<String> paths = (ArrayList<String>) load.get(chara);
+        if(paths == null){
+            log.info("No auth user");
+            return true;
+        }
         for (String path : paths) {
             if (path.equals(request.getRequestURI())){
                 //拦截所有配置的路径和对应的用户角色
-                System.out.println(request.getRequestURI()+" auth false");
+                log.info(request.getRequestURI()+" auth false");
                 response.sendError(401);
                 return false;
             }
         }
-        System.out.println(request.getRequestURI()+" auth success");
+        log.info(request.getRequestURI()+" auth success");
         return true;
     }
 }
